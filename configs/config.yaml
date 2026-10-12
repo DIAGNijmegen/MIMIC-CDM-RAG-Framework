@@ -1,0 +1,42 @@
+defaults:
+  - _self_
+  - paths: example 
+  - model: Llama3Instruct1B
+  # - model: Llama3Instruct70B
+  - rag: Qwen3-Embedding-0.6B_no_rerank #Qwen3-Embedding-0.6B #StellaEN400M
+  # - rag: NV-Embed
+
+pathology: appendicitis #Specify one of appendicitis, cholecystitis, diverticulitis, pancreatitis
+summarize: True #Automatically summarize the progress if we begin to reach the token limit
+agent: ZeroShot
+prompt_template: VANILLA
+fewshot: False
+include_ref_range: False
+bin_lab_results: False #True #False
+bin_lab_results_abnormal: False #True #False
+provide_diagnostic_criteria: False
+include_tool_use_examples: False #False
+abbreviated: True
+self_consistency: False
+only_abnormal_labs: False #True #False
+
+seed: 2023
+local_logging: True
+run_descr:
+
+first_patient:
+patient_list_path:
+
+order: pli
+diagnostic_criteria:
+
+rr_name: RR
+diag_crit_writer_openai_api_key:
+confirm_diagnosis: False
+save_probabilities: True #False
+
+# --- RAG config ---
+
+use_rag: False
+
+# --- RAG config ---

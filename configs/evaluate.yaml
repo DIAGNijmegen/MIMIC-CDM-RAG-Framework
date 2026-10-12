@@ -1,0 +1,45 @@
+# Independent evaluation config; reuse the inference data paths.
+defaults:
+  - paths: example
+  - _self_
+
+# Point directly to the directory containing run_rag.py run directories.
+logs_dir: ${local_logging_dir}
+output_dir: ${base_mimic}/logs/analysis
+id_difficulty_path: ${base_mimic}/id_difficulty.pkl
+
+# Model labels as written in result filenames, including the RAG suffix if used.
+models: []
+# Empty means the default seed (2023), which has no filename suffix.
+seeds: []
+agent: ZeroShot
+pathologies:
+  - appendicitis
+  - cholecystitis
+  - diverticulitis
+  - pancreatitis
+difficulty: first_diag
+
+# CDM_VANILLA matches runs ending in a timestamp; "" matches any suffix.
+# Other names match run directories ending in _<experiment>.
+experiments: [CDM_VANILLA]
+vanilla_experiment: CDM_VANILLA
+
+multiple_matches: shortest #options: shortest, error
+
+score_fields:
+  - Diagnosis
+  - Gracious Diagnosis
+  - Physical Examination
+  - Late Physical Examination
+  - Action Parsing
+  - Treatment Parsing
+  - Diagnosis Parsing
+  - Rounds
+  - Invalid Tools
+  - Unnecessary Laboratory Tests
+  - Unnecessary Imaging
+
+hydra:
+  job:
+    chdir: false
