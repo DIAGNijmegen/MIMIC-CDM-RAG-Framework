@@ -9,6 +9,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         build-essential \
         git \
+        libgl1 \
         libgomp1 \
         pkg-config \
         libcairo2-dev \
