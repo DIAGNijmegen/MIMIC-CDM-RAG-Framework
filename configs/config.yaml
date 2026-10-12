@@ -20,6 +20,8 @@ abbreviated: True
 self_consistency: False
 only_abnormal_labs: False #True #False
 
+# The base seed uses an unsuffixed run name; other seeds get _SEED=<seed>.
+base_seed: 2023
 seed: 2023
 local_logging: True
 run_descr:

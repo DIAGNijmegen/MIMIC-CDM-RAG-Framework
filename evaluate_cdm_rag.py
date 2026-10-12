@@ -88,7 +88,7 @@ def find_results(args, model, pathology, experiment):
     pattern = str(log_dir / f"{prefix}{run_suffix}" / f"{prefix}*_results.pkl")
     matches = glob.glob(pattern)
     if "_SEED=" not in model:
-        # The wildcard also matches seeded runs; exclude them for seed 2023.
+        # The wildcard also matches seeded runs; exclude them for the base seed.
         matches = [path for path in matches if "_SEED=" not in Path(path).name]
     matches = sorted(matches, key=lambda path: (len(path), path))
     if not matches:
@@ -108,8 +108,8 @@ def evaluate(args: DictConfig):
     """Evaluate configured models and experiments, saving compatible pickle artifacts."""
     if not args.models or not args.pathologies or not args.experiments:
         raise ValueError("models, pathologies, and experiments must be nonempty lists.")
-    if any(type(seed) is not int for seed in args.seeds):
-        raise ValueError("seeds must contain integer values.")
+    if type(args.base_seed) is not int or any(type(seed) is not int for seed in args.seeds):
+        raise ValueError("base_seed and every entry in seeds must be integers.")
     if args.multiple_matches not in ("shortest", "error"):
         raise ValueError("multiple_matches must be 'shortest' or 'error'.")
     for pathology in args.pathologies:
@@ -119,8 +119,8 @@ def evaluate(args: DictConfig):
         if experiment and (Path(experiment).name != experiment or experiment in (".", "..")):
             raise ValueError("Experiment names must be single directory names or an empty string.")
     models = list(dict.fromkeys(
-        model if seed == 2023 else f"{model}_SEED={seed}"
-        for model in args.models for seed in (args.seeds or [2023])
+        model if seed == args.base_seed else f"{model}_SEED={seed}"
+        for model in args.models for seed in (args.seeds or [args.base_seed])
     ))
     base_mimic = to_absolute_path(args.base_mimic)
     with open(to_absolute_path(args.id_difficulty_path), "rb") as handle:

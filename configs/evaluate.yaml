@@ -10,7 +10,8 @@ id_difficulty_path: ${base_mimic}/id_difficulty.pkl
 
 # Model labels as written in result filenames, including the RAG suffix if used.
 models: []
-# Empty means the default seed (2023), which has no filename suffix.
+# The base seed has no filename suffix. Empty seeds selects this seed only.
+base_seed: 2023
 seeds: []
 agent: ZeroShot
 pathologies:

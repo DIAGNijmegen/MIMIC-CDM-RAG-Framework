@@ -54,6 +54,8 @@ def load_evaluator(pathology):
 
 @hydra.main(config_path="./configs", config_name="config", version_base=None)
 def run(args: DictConfig):
+    if type(args.base_seed) is not int or type(args.seed) is not int:
+        raise ValueError("base_seed and seed must be integers.")
     if not args.self_consistency:
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = True
@@ -163,7 +165,7 @@ def run(args: DictConfig):
     if args.use_rag:
         run_name += f"_{args.rag_name}"
 
-    if args.seed != 2023:
+    if args.seed != args.base_seed:
         run_name += f"_SEED={args.seed}"
 
     run_name += f"_{str_date}"
@@ -210,7 +212,7 @@ def run(args: DictConfig):
     # os.environ["LANGCHAIN_PROJECT"] = run_name
 
     #DEBUG: run only for 50 patients
-    # hadm_info_clean = dict(list(hadm_info_clean.items())[:50])
+    hadm_info_clean = dict(list(hadm_info_clean.items())[:50])
 
     # Predict for all patients
     first_patient_seen = False
