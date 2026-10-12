@@ -1,3 +1,3 @@
 # REPOSITORY CODEBASE UNDER TRANSFER
 
-## Full codebase will be available Monday 12 October or before.
+## Full codebase will be available during Monday 12 October the latest.
