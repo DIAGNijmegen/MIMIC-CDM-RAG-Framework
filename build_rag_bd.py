@@ -275,6 +275,5 @@ def build(args: DictConfig):
     print(f"- Doc summary:      {summary_csv}")
     print(f"- Overall metadata: {join(out_dir, 'rag_db_overall.json')}")
 
-
 if __name__ == "__main__":
     build()

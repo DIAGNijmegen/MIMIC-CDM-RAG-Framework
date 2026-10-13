@@ -1,0 +1,141 @@
+# Main manuscript figure: CSV discovery and raw model key -> cleaned name mapping.
+# Set results_dir to the inspection folder; optional panel directories override it.
+# selected_models chooses model keys; null uses all entries in models.
+# Cohort/guideline counts reproduce the notebook; update them for your data.
+defaults:
+  - _self_
+  - override hydra/job_logging: disabled
+  - override hydra/hydra_logging: disabled
+results_dir: null
+overall_dir: null
+pathology_dir: null
+csv_pattern: DiagAccCDM_Fig3_*.csv
+output_dir: figures
+output_name: diagnostic_accuracy_stacked
+formats:
+  - pdf
+  - svg
+  - png
+dpi: 450
+figure_size:
+  - 7.2
+  - 8.35
+render: true
+statistics: true
+show: false
+show_composition: true
+base_seed: 2023
+seeds:
+  - 2023
+  - 123
+  - 4896
+pathologies:
+  - Appendicitis
+  - Cholecystitis
+  - Diverticulitis
+  - Pancreatitis
+confidence: 0.95
+selected_models: null
+models:
+  # Llama-3.2-1B-Instruct-exl2-4.0bpw:
+  #   name: Llama3.2-1B
+  #   size: 1
+  #   medical: false
+  #   rag: Llama-3.2-1B-Instruct-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+  #   display_label: null
+  #   pathology_no_rag: null
+  #   pathology_rag: null
+  # Mistral-7B-instruct-v0.3-exl2-4.0bpw:
+  #   name: Mistral-7B
+  #   size: 7
+  #   medical: false
+  #   rag: Mistral-7B-instruct-v0.3-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+  #   display_label: null
+  #   pathology_no_rag: null
+  #   pathology_rag: null
+  gemma-2-9b-it-exl2-4.0bpw:
+    name: Gemma2-9B
+    size: 9
+    medical: false
+    rag: gemma-2-9b-it-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+    display_label: null
+    pathology_no_rag: null
+    pathology_rag: null
+  # Llama-3.1-8B-Instruct-exl2-4.0bpw:
+  #   name: Llama3.1-8B
+  #   size: 8
+  #   medical: false
+  #   rag: Llama-3.1-8B-Instruct-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+  #   display_label: null
+  #   pathology_no_rag: null
+  #   pathology_rag: null
+  # Llama-3.1-8B-UltraMedical-exl2-4.0bpw:
+  #   name: Llama3-UltraMedical-8B
+  #   size: 8
+  #   medical: true
+  #   rag: Llama-3.1-8B-UltraMedical-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+  #   display_label: 'Llama3-Ultra\nMedical-8B'
+  #   pathology_no_rag: null
+  #   pathology_rag: null
+  # Qwen3-30B-A3B-exl2-4.0bpw:
+  #   name: Qwen3-30B
+  #   size: 30
+  #   medical: false
+  #   rag: Qwen3-30B-A3B-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+  #   display_label: null
+  #   pathology_no_rag: null
+  #   pathology_rag: null
+  # Llama-3.1-70B-Instruct-exl2-4.0bpw:
+  #   name: Llama3.1-70B
+  #   size: 70
+  #   medical: false
+  #   rag: Llama-3.1-70B-Instruct-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+  #   display_label: null
+  #   pathology_no_rag: null
+  #   pathology_rag: null
+  # Meditron3-70B-exl2-4.0bpw:
+  #   name: Meditron3-70B
+  #   size: 70
+  #   medical: true
+  #   rag: Meditron3-70B-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+  #   display_label: null
+  #   pathology_no_rag: null
+  #   pathology_rag: null
+cohort:
+  title: Evaluation Cohort
+  unit: cases
+  counts:
+    - label: Appendicitis
+      count: 957
+      color: '#BAC5DE'
+    - label: Cholecystitis
+      count: 648
+      color: '#E6B0C9'
+    - label: Diverticulitis
+      count: 257
+      color: '#C9B0D9'
+    - label: Pancreatitis
+      count: 538
+      color: '#B8D7D1'
+guidelines:
+  title: RAG Guidelines
+  unit: snippets
+  counts:
+    - label: Appendicitis
+      count: 192
+      color: '#BAC5DE'
+    - label: Cholecystitis
+      count: 114
+      color: '#E6B0C9'
+    - label: Diverticulitis
+      count: 193
+      color: '#C9B0D9'
+    - label: Pancreatitis
+      count: 140
+      color: '#B8D7D1'
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: .
+  output_subdir: null
