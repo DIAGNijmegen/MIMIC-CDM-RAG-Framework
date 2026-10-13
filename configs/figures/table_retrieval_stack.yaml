@@ -1,0 +1,132 @@
+# @package _global_
+defaults:
+  - _table
+  - _self_
+output_subdir: stack_benchmark_table
+output_name: retrieval_stack_benchmark_table
+figure_width: 19.0
+min_height: 7.0
+height_scale: 0.72
+# The original stack notebook compares one saved run per configuration.
+seeds:
+  - ${base_seed}
+# Retain unavailable configurations as empty cells; error requires complete data.
+missing_rows: keep
+selected_stacks: null
+# Keys are exact CSV configuration IDs without seed suffixes. model refers to
+# the raw backbone key in the shared models mapping; labels are explicit text.
+stacks:
+  Llama-3.1-70B-Instruct-exl2-4.0bpw:
+    model: Llama-3.1-70B-Instruct-exl2-4.0bpw
+    lexical: –
+    semantic: –
+    reranker: –
+    highlight: false
+  Llama-3.1-70B-Instruct-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank:
+    model: Llama-3.1-70B-Instruct-exl2-4.0bpw
+    lexical: BM25
+    semantic: Qwen3-Embedding-0.6B
+    reranker: MedCPT-Cross-encoder
+    highlight: true
+  Llama-3.1-70B-Instruct-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank_norr:
+    model: Llama-3.1-70B-Instruct-exl2-4.0bpw
+    lexical: BM25
+    semantic: Qwen3-Embedding-0.6B
+    reranker: –
+    highlight: false
+  Llama-3.1-70B-Instruct-exl2-4.0bpw_Qwen3-Embedding-0.6B_boosted_qwen_rerank:
+    model: Llama-3.1-70B-Instruct-exl2-4.0bpw
+    lexical: BM25
+    semantic: Qwen3-Embedding-0.6B
+    reranker: Qwen3-Reranker-0.6B
+    highlight: false
+  Llama-3.1-70B-Instruct-exl2-4.0bpw_stella_en_400M_v5_pdf:
+    model: Llama-3.1-70B-Instruct-exl2-4.0bpw
+    lexical: –
+    semantic: stella_en_400M_v5
+    reranker: –
+    highlight: false
+  Llama-3.1-70B-Instruct-exl2-4.0bpw_NV-Embed-v2:
+    model: Llama-3.1-70B-Instruct-exl2-4.0bpw
+    lexical: –
+    semantic: NV-Embed-v2
+    reranker: –
+    highlight: false
+  gemma-2-9b-it-exl2-4.0bpw:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: –
+    semantic: –
+    reranker: –
+    highlight: false
+  gemma-2-9b-it-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: BM25
+    semantic: Qwen3-Embedding-0.6B
+    reranker: MedCPT-Cross-encoder
+    highlight: true
+  gemma-2-9b-it-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank_norr:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: BM25
+    semantic: Qwen3-Embedding-0.6B
+    reranker: –
+    highlight: false
+  gemma-2-9b-it-exl2-4.0bpw_MedCPT_md_boosted_qwen_rerank:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: BM25
+    semantic: MedCPT-Article-Encoder
+    reranker: Qwen3-Reranker-0.6B
+    highlight: false
+  gemma-2-9b-it-exl2-4.0bpw_MedCPT_md_boosted_medcpt_rerank:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: BM25
+    semantic: MedCPT-Article-Encoder
+    reranker: MedCPT-Cross-encoder
+    highlight: false
+  gemma-2-9b-it-exl2-4.0bpw_stella_en_400M_v5_pdf:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: –
+    semantic: stella_en_400M_v5
+    reranker: –
+    highlight: false
+  gemma-2-9b-it-exl2-4.0bpw_Qwen3-Embedding-0.6B_boosted_medprocner_rerank:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: BM25
+    semantic: Qwen3-Embedding-0.6B
+    reranker: Medprocner-CE-Reranker
+    highlight: false
+  gemma-2-9b-it-exl2-4.0bpw_Qwen3-Embedding-0.6B_boosted_ms-marco_rerank:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: BM25
+    semantic: Qwen3-Embedding-0.6B
+    reranker: ms-marco-MiniLM-L6-v2
+    highlight: false
+  gemma-2-9b-it-exl2-4.0bpw_Qwen3-Embedding-0.6B_boosted_qwen3_rerank:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: BM25
+    semantic: Qwen3-Embedding-0.6B
+    reranker: Qwen3-Reranker-0.6B
+    highlight: false
+  gemma-2-9b-it-exl2-4.0bpw_MedCPT_md_febstep_boosted_medcpt_rerank_norr:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: BM25
+    semantic: MedCPT-Article-Encoder
+    reranker: –
+    highlight: false
+  gemma-2-9b-it-exl2-4.0bpw_MedCPT_md_febstep_boosted_medcpt_rerank_norr_nobm:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: –
+    semantic: MedCPT-Article-Encoder
+    reranker: –
+    highlight: false
+  gemma-2-9b-it-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank_norr_nomd:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: –
+    semantic: Qwen3-Embedding-0.6B
+    reranker: –
+    highlight: false
+  gemma-2-9b-it-exl2-4.0bpw_stella_md_febstep_boosted_medcpt_rerank_norr:
+    model: gemma-2-9b-it-exl2-4.0bpw
+    lexical: BM25
+    semantic: stella_en_400M_v5
+    reranker: –
+    highlight: false

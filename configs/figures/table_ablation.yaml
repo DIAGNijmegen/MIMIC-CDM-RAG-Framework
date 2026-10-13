@@ -1,0 +1,66 @@
+# @package _global_
+defaults:
+  - _table
+  - _self_
+output_subdir: ablation_table
+output_name: benchmark_table_with_ci_inter_seed
+figure_width: 16.5
+min_height: 6.5
+height_scale: 0.74
+group_order:
+  - Baseline
+  - Corpora
+  - Ablations
+  - Our Framework
+ablation_variants:
+  # Build each exact CSV ID from the selected shared model's baseline/rag ID,
+  # then apply replacements and append the suffix, before adding a seed suffix.
+  - name: w/o RAG
+    label: w/o RAG
+    group: Baseline
+    source: baseline
+  - name: w/o clean
+    label: raw guidelines
+    group: Ablations
+    source: rag
+    suffix: _nomd
+  - name: w/o U-order
+    label: w/o u-shape ordering
+    group: Ablations
+    source: rag
+    suffix: _nouo
+  - name: w/o rerank
+    label: w/o reranking
+    group: Ablations
+    source: rag
+    suffix: _norr
+  - name: w/o requery
+    label: w/o requery
+    group: Ablations
+    source: rag
+    suffix: _norq
+  - name: w/o skip step 1
+    label: w/o skip. 1st retrieval
+    group: Ablations
+    source: rag
+    replace:
+      febstep: feb
+  - name: Main Four
+    label: Main Four
+    group: Corpora
+    source: rag
+    suffix: _4
+  - name: Ambiguous
+    label: Ambiguous
+    group: Corpora
+    source: rag
+    suffix: _ambig
+  - name: All
+    label: All
+    group: Our Framework
+    source: rag
+  - name: Augmented
+    label: Augmented
+    group: Corpora
+    # The original notebook intentionally reuses the raw-guidelines summary.
+    alias_of: w/o clean

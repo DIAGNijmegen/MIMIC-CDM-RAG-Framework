@@ -1,0 +1,19 @@
+# @package _global_
+metric_patterns:
+  diagnostic_accuracy: DiagAccCDM_Fig3_*.csv
+  alignment: OverallAlignment_PatientMean_*.csv
+  # Select the dated long-format export; exclude the *_wide_* export.
+  retrieval: RetrievalMetrics_withMean_[0-9]*.csv
+  treatment: TreatmentSummary_*.csv
+metric_dirs:
+  # null uses the shared results_dir; set a folder here to split inputs.
+  diagnostic_accuracy: null
+  alignment: null
+  retrieval: null
+  treatment: null
+model_aliases: {}
+# Average duplicate configuration/seed rows as in the notebooks, or use error.
+duplicate_rows: mean
+missing_rows: error
+# Preserve the notebooks' empty-cell convention. false retains real zero values.
+zero_as_missing: true
