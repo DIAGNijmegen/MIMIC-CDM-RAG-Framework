@@ -1,0 +1,111 @@
+# @package _global_
+# One retrieval-composition figure per run; composed through figures.yaml.
+retrieval_dir: null
+document_dir: null
+retrieval_pattern: RetrievalMetrics_perPathology_*.csv
+document_pattern: RetrievalDocumentCounts_*.csv
+# null uses each selected shared model's rag ID plus experiment_suffix.
+# Alternatively supply exact seed-independent CSV experiment IDs.
+experiments: null
+experiment_suffix: ''
+# null infers Prop_* classes; inactive non-patient classes are omitted.
+guideline_columns: null
+output_subdir: retrievals_figure
+output_name: retrieval_composition
+figure_size: [7.05, null]  # null height grows with the number of documents.
+heatmap_title: Document-level retrieval composition
+heatmap_cmap: Blues
+document_labels: {}  # Exact DocumentReference -> name (or name/pathology mapping).
+pathology_colors:
+  Appendicitis: '#5478B3'
+  Cholecystitis: '#7A57A8'
+  Diverticulitis: '#B3477A'
+  Pancreatitis: '#5F9C92'
+  Other: '#8B8B8B'
+pathology_light_colors:
+  Appendicitis: '#BAC5DE'
+  Cholecystitis: '#C9B0D9'
+  Diverticulitis: '#E6B0C9'
+  Pancreatitis: '#B2D9CD'
+  Other: '#DCDCDC'
+document_name_rules:
+- match: aafp_appendicitis
+  name: Snyder et al. (2018)
+- match: cdm_appendicitis
+  name: WSES (2020)
+- match: idsa_appendicitis
+  name: IDSA (2024)
+- match: sages_appendicitis
+  name: SAGES (2024)
+- match: jcm_cholecystitis
+  name: Mencarini et al. (2024)
+- match: tokyo_cholecystitis
+  name: Tokyo Guidelines (2018)
+- match: cdm_cholecystitis
+  name: WSES (2020)
+- match: nice_cholecystitis
+  name: NICE (2015)
+- match: nice_diverticulitis
+  name: NICE (2019)
+- match: aga_diverticulitis
+  name: AGA (2021)
+- match: cdm_diverticulitis
+  name: ASCRS (2020)
+- match: euro_diverticulitis
+  name: ESCP (2020)
+- match: bspghan_pancreatitis
+  name: Goodchild et al. (2019)
+- match: nice_pancreatitis
+  name: NICE (2018/2020)
+- match: cdm_pancreatitis
+  name: WSES (2019)
+- match: iap_pancreatitis
+  name: IAP & APA (2013)
+- match: abdominal_aortic_aneurysm
+  name: ESVS (2024)
+  pathology: Ruptured AAA
+- match: acute_mesenteric_ischemia
+  name: WSES (2022)
+  pathology: Acute mesenteric ischemia
+- match: bjog - 2016
+  name: RCOG (2016)
+  pathology: Ruptured ectopic pregnancy
+- match: cholangitis_
+  name: ASGE (2021)
+  pathology: Ascending cholangitis
+- match: clostridioides_difficile
+  name: Bishop & Tiruvoipati (2023)
+  pathology: C. difficile colitis
+- match: diabetic_ketoacidosis
+  name: JBDS-IP (2022)
+  pathology: Diabetic ketoacidosis (DKA)
+- match: eau-guidelines-on-urolithiasis
+  name: EAU (2025)
+  pathology: Nephrolithiasis
+- match: gastroenteritis_
+  name: Kim et al. (2019)
+  pathology: Gastroenteritis
+- match: ischaemic_colitis
+  name: Hung et al. (2021)
+  pathology: Ischemic colitis
+- match: pelvic_inflammatory_disease
+  name: Yusuf & Trent (2023)
+  pathology: Pelvic inflammatory disease
+- match: peptic_ulcer
+  name: Lebedeva (2002)
+  pathology: Perforated peptic ulcer
+- match: pyelonephritis_
+  name: NICE (2018)
+  pathology: Acute pyelonephritis
+- match: small_bowel_obstruction
+  name: WSES (2018)
+  pathology: Small bowel obstruction (SBO)
+- match: spontaneous_bacterial_peritonitis
+  name: EASL (2010)
+  pathology: Spontaneous bacterial peritonitis
+- match: testicular_torsion
+  name: Sharp et al. (2013)
+  pathology: Testicular torsion
+- match: ulcerative_colitis
+  name: AGA (2024)
+  pathology: Crohn’s flare / UC
