@@ -1,0 +1,42 @@
+# @package _global_
+defaults:
+  - _self_
+
+rag_name: all-MiniLM-L6-v2
+rag_embedding_model: all-MiniLM-L6-v2
+
+#Embedding model parameters
+rag_chunk_size: 512
+rag_chunk_overlap: 52
+
+rag_embed_max_length: 512
+
+rag_requery: False
+rag_requery_max_length: 1024
+rag_requery_only_last_report: False #Only use the last report for requerying
+
+#Retrieval parameters
+rag_top_k: 60
+rag_prompt_name: "None"
+
+rag_re_rank: False
+rag_re_rank_model:
+rag_top_k_rerank: 6
+
+rag_vector_store_use_bm25: False
+rag_retrieval_hybrid_bm25: False
+rag_retrieval_hybrid_bm25_alpha: 0.65 # Ratio of dense, rest is BM25
+rag_retrieval_hybrid_bm25_top_k: 60 # BM25 candidate pool
+
+#Lost-in-the-middle prevention
+rag_u_ordering: True 
+
+#Skip first retrieval step to allow the agent to gather some initial information first.
+rag_skip_first_retrieval: True
+
+# Document paths for retrieval
+rag_documents:
+  - /markdown/cdm_appendicitis_s13017-020-00306-3_edited.md
+  - /markdown/cdm_cholecystitis_s13017-020-00336-x.md
+  - /markdown/cdm_diverticulitis_the_american_society_of_colon_and_rectal_surgeons.6.md
+  - /markdown/cdm_pancreatitis_s13017-019-0247-0.md

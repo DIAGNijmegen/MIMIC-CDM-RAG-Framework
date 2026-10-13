@@ -3,7 +3,7 @@
 Main loop of the framework. `run_rag.py` runs a diagnostic agent with optional guideline retrieval. It uses `configs/config.yaml` and profiles under `configs/paths/`, `configs/model/`, and `configs/rag/`.
 
 ```bash
-python run_rag.py model=Gemma2Instruct9B rag=Qwen3-Embedding-0.6B_febstep \
+python run_rag.py model=Gemma2Instruct9B rag=Qwen3-Embedding-0.6B_skipstep \
   use_rag=true pathology=appendicitis base_seed=2023 seed=123
 ```
 

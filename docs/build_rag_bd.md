@@ -4,7 +4,7 @@
 `configs/config.yaml`, `configs/paths/`, and the selected `configs/rag/` profile.
 
 ```bash
-python build_rag_bd.py rag=Qwen3-Embedding-0.6B_febstep \
+python build_rag_bd.py rag=Qwen3-Embedding-0.6B_skipstep \
   base_models=/path/to/models base_rag_documents=/path/to/guidelines \
   local_logging_dir=/path/to/output
 ```
@@ -16,7 +16,7 @@ python build_rag_bd.py rag=Qwen3-Embedding-0.6B_febstep \
 | `base_rag_documents` | Root directory for corpus files. |
 | `rag_documents` | File paths relative to that root. |
 | `rag_embedding_model`, `rag_embed_max_length` | Document embedder and input token limit. |
-| `rag_chunk_size`, `rag_chunk_overlap`, `rag_smart_chunking` | Chunking settings. |
+| `rag_chunk_size`, `rag_chunk_overlap` | Chunk size and overlap. |
 | `rag_pre_embed_path` | Optional precomputed embeddings path, relative to the corpus root. |
 | `rag_vector_store_use_bm25` | Build the BM25 corpus alongside the vector index. |
 | `local_logging_dir` | Destination for timestamped `RAGDB_*` folders. |

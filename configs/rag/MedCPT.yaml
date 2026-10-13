@@ -1,0 +1,55 @@
+# @package _global_
+defaults:
+  - _self_
+
+rag_name: MedCPT_MedCPT_rerank
+rag_embedding_model: MedCPT-Article-Encoder
+rag_query_embedding_model: MedCPT-Query-Encoder
+
+#Embedding model parameters
+rag_chunk_size: 512
+rag_chunk_overlap: 52
+
+rag_embed_max_length: 512
+
+rag_requery: True
+rag_requery_max_length: 1024
+rag_requery_only_last_report: False #Only use the last report for requerying
+
+#Retrieval parameters
+rag_top_k: 60
+rag_prompt_name: "None"
+
+rag_re_rank: True
+rag_re_rank_model: MedCPT-Cross-Encoder
+rag_top_k_rerank: 6
+
+rag_vector_store_use_bm25: True
+rag_retrieval_hybrid_bm25: True
+rag_retrieval_hybrid_bm25_alpha: 0.65 # Ratio of dense, rest is BM25
+rag_retrieval_hybrid_bm25_top_k: 60 # BM25 candidate pool
+
+#Lost-in-the-middle prevention
+rag_u_ordering: True 
+
+#Skip first retrieval step to allow the agent to gather some initial information first.
+rag_skip_first_retrieval: True
+
+# Document paths for retrieval
+rag_documents:
+  - /markdown_cleaned/cdm_appendicitis_s13017-020-00306-3.md
+  - /markdown_cleaned/cdm_cholecystitis_s13017-020-00336-x.md
+  - /markdown_cleaned/cdm_diverticulitis_the_american_society_of_colon_and_rectal_surgeons.6.md
+  - /markdown_cleaned/cdm_pancreatitis_s13017-019-0247-0.md
+  - /markdown_cleaned/aafp_appendicitis_aafp.org_0701_p25.md
+  - /markdown_cleaned/idsa_appendicitis_ciae348.md
+  - /markdown_cleaned/sages_appendicitis_sages.org-Guideline for the Diagnosis and Treatment of Appendicitis.md
+  - /markdown_cleaned/jcm_cholecystitis_jcm-13-02695-v2.md
+  - /markdown_cleaned/nice_cholecystitis_gallstone-disease-pdf-75545237643973.md
+  - /markdown_cleaned/tokyo_cholecystitis_J Hepato Biliary Pancreat - 2017 - Yokoe - Tokyo Guidelines 2018 diagnostic criteria and severity grading of acute.md
+  - /markdown_cleaned/aga_diverticulitis_PIIS0016508520355128.md
+  - /markdown_cleaned/euro_diverticulitis_Colorectal Disease - 2020 - Schultz - European Society of Coloproctology guidelines for the management of diverticular.md
+  - /markdown_cleaned/nice_diverticulitis_diverticular-disease-diagnosis-and-management-pdf-66141784856005.md
+  - /markdown_cleaned/bspghan_pancreatitis-frontline-gastro-review.md
+  - /markdown_cleaned/iap_pancreatitis_IAP_APA_Evidence-based_Guidelines_Management_Acute_Pancreatitis_-_Pancreatology_2013.md
+  - /markdown_cleaned/nice_pancreatitis-pdf-66141537952453.md

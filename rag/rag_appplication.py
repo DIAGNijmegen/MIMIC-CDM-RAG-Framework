@@ -7,8 +7,6 @@ import json
 from os.path import join
 
 from langchain.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.text_splitter import MarkdownHeaderTextSplitter
 from langchain.schema import Document
 import torch
 import torch.nn.functional as F
@@ -265,7 +263,6 @@ class VectorStore:
         embedding_model_container,
         chunk_size=250,
         chunk_overlap=0,
-        smart_chunking=False,
         pre_embed_path=None,
         use_bm25: bool = False,
         bm25_tokenizer=None
@@ -276,7 +273,6 @@ class VectorStore:
         :param embedding_model_container: An instance of EmbeddingModelContainer.
         :param chunk_size: Size of text chunks for splitting documents.
         :param chunk_overlap: Overlap size between chunks.
-        :param smart_chunking: When chunking markdown, chunk by headers and prepend titles.
         :param pre_embed_path: Optional path to precomputed embeddings (.npy).
         :param use_bm25: Whether to build a BM25 index for hybrid retrieval.
         :param bm25_tokenizer: Optional callable(text) -> List[str] for BM25 tokenization.
@@ -284,7 +280,6 @@ class VectorStore:
         self.embedding_model = embedding_model_container
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
-        self.smart_chunking = smart_chunking
 
         # BM25-related fields
         self.use_bm25 = use_bm25
@@ -535,114 +530,8 @@ class VectorStore:
         doc_chunks = []
 
         for doc in documents:
-            # ---------- MARKDOWN WITH SMART CHUNKING ----------
-            if self.smart_chunking and doc.metadata.get('format') == 'markdown':
-                # 1) Split by markdown headers (hierarchical)
-                headers_to_split_on = [
-                    ("#", "header_1"),
-                    ("##", "header_2"),
-                    ("###", "header_3"),
-                    ("####", "header_4"),
-                    ("#####", "header_5"),
-                    ("######", "header_6"),
-                ]
-                markdown_splitter = MarkdownHeaderTextSplitter(headers_to_split_on)
-                header_chunks = markdown_splitter.split_text(doc.page_content)
-
-                # 2) Constrain by length with RecursiveCharacterTextSplitter
-                #    NOTE: choose chunk_size ~150–256 and overlap ~20–40 in your config
-                text_splitter = RecursiveCharacterTextSplitter(
-                    chunk_size=self.chunk_size,
-                    chunk_overlap=self.chunk_overlap,
-                )
-                chunks = text_splitter.split_documents(header_chunks)
-
-                for i, chunk in enumerate(chunks):
-                    base_text = chunk.page_content
-                    chunk_metadata = chunk.metadata  # contains header_1..header_6
-                    #
-                    # --- Build hierarchical title from headers ---
-                    #
-                    header_values = [
-                        chunk_metadata.get(f"header_{level}", None)
-                        for level in range(1, 7)
-                    ]
-                    header_values = [
-                        h for h in header_values
-                        if h is not None and h != "unknown"
-                    ]
-
-                    if header_values:
-                        # e.g. "Acute appendicitis > Diagnosis > Imaging"
-                        header_hierarchy = " > ".join(header_values)
-                    else:
-                        header_hierarchy = ""
-
-                    #
-                    # --- Build markdown-style title block (you already did this) ---
-                    #
-                    chunk_title_lines = []
-                    for key in chunk_metadata:
-                        if key.startswith("header_"):
-                            try:
-                                level = int(key.split("_")[-1])
-                            except ValueError:
-                                continue
-                            title_text = chunk_metadata[key]
-                            if title_text and title_text != "unknown":
-                                chunk_title_lines.append("#" * level + " " + title_text)
-
-                    chunk_title_block = "\n".join(chunk_title_lines)
-                    
-                    #
-                    # --- Inject titles into page_content used for embeddings ---
-                    #
-                    # 1) Optional logical hierarchy line
-                    # 2) Markdown headings (chunk_title_block)
-                    # 3) Original chunk text
-                    parts = []
-                    # if header_hierarchy:
-                    #     parts.append(header_hierarchy)
-                    if chunk_title_block:
-                        parts.append(chunk_title_block)
-                    parts.append(base_text)
-
-                    chunk_text = "\n\n".join(parts)
-
-                    # Tokenize the full text (with hierarchy) for token_size
-                    tokens = tokenizer.encode(chunk_text, add_special_tokens=False)
-
-                    # Build final Document with original doc metadata as base
-                    new_chunk = Document(
-                        page_content=chunk_text,
-                        metadata=doc.metadata.copy()
-                    )
-
-                    chunk_id = f"chunk_{len(doc_chunks)}"
-                    new_chunk.metadata['chunk_id'] = new_chunk.metadata.get('segment_id', chunk_id)
-                    new_chunk.metadata['token_size'] = len(tokens)
-                    new_chunk.metadata['document_reference'] = new_chunk.metadata.get('source', 'unknown')
-                    new_chunk.metadata['page_number'] = new_chunk.metadata.get('page', 'unknown')
-                    new_chunk.metadata['order_in_document'] = i
-
-                    # Copy header metadata down so you can debug / filter
-                    new_chunk.metadata['header_1'] = chunk_metadata.get('header_1', 'unknown')
-                    new_chunk.metadata['header_2'] = chunk_metadata.get('header_2', 'unknown')
-                    new_chunk.metadata['header_3'] = chunk_metadata.get('header_3', 'unknown')
-                    new_chunk.metadata['header_4'] = chunk_metadata.get('header_4', 'unknown')
-                    new_chunk.metadata['header_5'] = chunk_metadata.get('header_5', 'unknown')
-                    new_chunk.metadata['header_6'] = chunk_metadata.get('header_6', 'unknown')
-
-                    # Synthetic hierarchy field
-                    new_chunk.metadata['header_hierarchy'] = header_hierarchy
-
-                    # Keep the markdown-style title block for inspection if you like
-                    new_chunk.metadata['chunk_title'] = chunk_title_block
-
-                    doc_chunks.append(new_chunk)
-
             # ---------- MEDCPT or Docling-based markdown (already chunked) ----------
-            elif doc.metadata.get('format') in ('medcpt', 'markdown_docling'):
+            if doc.metadata.get('format') in ('medcpt', 'markdown_docling'):
                 doc_chunks.append(doc)
 
             # ---------- ALL OTHER FORMATS (PDF, plain text, etc.) ----------

@@ -118,7 +118,6 @@ def run(args: DictConfig):
             embedding_model_container=embedding_model_container,
             chunk_size=args.rag_chunk_size,
             chunk_overlap=args.rag_chunk_overlap,
-            smart_chunking=args.rag_smart_chunking,
             pre_embed_path=os.path.join(args.base_rag_documents, args.rag_pre_embed_path.lstrip('/')) if hasattr(args, 'rag_pre_embed_path') else None,
             use_bm25=args.rag_vector_store_use_bm25 if hasattr(args, 'rag_vector_store_use_bm25') else False,
         )

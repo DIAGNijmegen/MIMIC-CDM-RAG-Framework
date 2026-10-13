@@ -44,7 +44,7 @@ ablation_variants:
     group: Ablations
     source: rag
     replace:
-      febstep: feb
+      skipstep: skip
   - name: Main Four
     label: Main Four
     group: Corpora

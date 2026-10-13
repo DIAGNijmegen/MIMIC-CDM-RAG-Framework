@@ -2,9 +2,7 @@ defaults:
   - _self_
   - paths: example 
   - model: Llama3Instruct1B
-  # - model: Llama3Instruct70B
-  - rag: Qwen3-Embedding-0.6B_no_rerank #Qwen3-Embedding-0.6B #StellaEN400M
-  # - rag: NV-Embed
+  - rag: Qwen3-Embedding-0.6B
 
 pathology: appendicitis #Specify one of appendicitis, cholecystitis, diverticulitis, pancreatitis
 summarize: True #Automatically summarize the progress if we begin to reach the token limit
@@ -12,13 +10,13 @@ agent: ZeroShot
 prompt_template: VANILLA
 fewshot: False
 include_ref_range: False
-bin_lab_results: False #True #False
-bin_lab_results_abnormal: False #True #False
+bin_lab_results: False
+bin_lab_results_abnormal: False
 provide_diagnostic_criteria: False
-include_tool_use_examples: False #False
+include_tool_use_examples: False
 abbreviated: True
 self_consistency: False
-only_abnormal_labs: False #True #False
+only_abnormal_labs: False
 
 # The base seed uses an unsuffixed run name; other seeds get _SEED=<seed>.
 base_seed: 2023
@@ -35,7 +33,7 @@ diagnostic_criteria:
 rr_name: RR
 diag_crit_writer_openai_api_key:
 confirm_diagnosis: False
-save_probabilities: True #False
+save_probabilities: True
 
 # --- RAG config ---
 

@@ -93,7 +93,6 @@ def build(args: DictConfig):
         embedding_model_container=embedding_model_container,
         chunk_size=args.rag_chunk_size,
         chunk_overlap=args.rag_chunk_overlap,
-        smart_chunking=args.rag_smart_chunking,
         pre_embed_path=pre_embed_path,
         use_bm25=args.rag_vector_store_use_bm25 if hasattr(args, "rag_vector_store_use_bm25") else False,
     )
@@ -245,7 +244,6 @@ def build(args: DictConfig):
         "embed_max_length": embed_max_len,
         "chunk_size": getattr(args, "rag_chunk_size", None),
         "chunk_overlap": getattr(args, "rag_chunk_overlap", None),
-        "smart_chunking": getattr(args, "rag_smart_chunking", None),
         "pre_embed_path": pre_embed_path,
         "total_chunks": int(total_chunks),
         "unique_documents": int(df_chunks["document_reference"].nunique(dropna=False)),
