@@ -1,6 +1,6 @@
 """Render the main manuscript figure and its statistics from inspection CSVs.
 
-Use configs/main_figure.yaml and Hydra key=value overrides. Importing this module
+Use configs/figures.yaml, figures/<profile>.yaml, and Hydra key=value overrides. Importing this module
 performs no plotting or file I/O. See docs/figures.md for inputs and examples.
 """
 
@@ -1343,7 +1343,7 @@ def main(args: DictConfig):
 
 @hydra.main(
     config_path=str(Path(__file__).resolve().parents[1] / "configs"),
-    config_name="main_figure",
+    config_name="figures",
     version_base=None,
 )
 def run(args: DictConfig):

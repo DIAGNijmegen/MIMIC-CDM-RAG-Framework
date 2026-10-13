@@ -1,0 +1,11 @@
+# @package _global_
+# Main diagnostic-accuracy figure; composed through configs/figures.yaml.
+# Null panel directories use the shared results_dir.
+overall_dir: null
+pathology_dir: null
+csv_pattern: DiagAccCDM_Fig3_*.csv
+output_name: diagnostic_accuracy_stacked
+figure_size:
+  - 7.2
+  - 8.35
+show_composition: true

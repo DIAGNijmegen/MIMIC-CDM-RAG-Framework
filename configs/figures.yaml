@@ -1,29 +1,22 @@
-# Main manuscript figure: CSV discovery and raw model key -> cleaned name mapping.
-# Set results_dir to the inspection folder; optional panel directories override it.
-# selected_models chooses model keys; null uses all entries in models.
-# Cohort/guideline counts reproduce the notebook; update them for your data.
+# Shared settings for figure scripts. Select a profile with figures=<name>.
+# Raw model keys, cleaned names, paths, seeds and export options live here.
+# Cohort/guideline counts reproduce the manuscript; update them for your data.
 defaults:
   - _self_
+  - figures: main_figure
   - override hydra/job_logging: disabled
   - override hydra/hydra_logging: disabled
+
 results_dir: null
-overall_dir: null
-pathology_dir: null
-csv_pattern: DiagAccCDM_Fig3_*.csv
 output_dir: figures
-output_name: diagnostic_accuracy_stacked
 formats:
   - pdf
   - svg
   - png
 dpi: 450
-figure_size:
-  - 7.2
-  - 8.35
 render: true
 statistics: true
 show: false
-show_composition: true
 base_seed: 2023
 seeds:
   - 2023
@@ -133,6 +126,7 @@ guidelines:
     - label: Pancreatitis
       count: 140
       color: '#B8D7D1'
+
 hydra:
   job:
     chdir: false
