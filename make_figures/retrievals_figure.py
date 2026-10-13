@@ -1,7 +1,7 @@
 """Render one configurable retrieval-composition figure from inspection CSVs.
 
 Select figures=retrievals_figure through configs/figures.yaml. See
-docs/retrievals_figure.md. Importing this module performs no I/O or rendering.
+docs/figures/retrievals_figure.md. Importing this module performs no I/O or rendering.
 """
 
 import re

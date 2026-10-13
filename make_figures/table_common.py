@@ -1,4 +1,7 @@
-"""Shared CSV loading, model selection and exports for benchmark table scripts."""
+"""Shared CSV loading, model selection and exports for benchmark table scripts.
+
+See docs/figures/table_common.md for the helper API and configuration.
+"""
 
 import re
 from dataclasses import dataclass

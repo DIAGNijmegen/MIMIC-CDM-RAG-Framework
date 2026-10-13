@@ -1,7 +1,7 @@
 """Generate configurable per-model six-panel appendix reports from inspection CSVs.
 
 Use figures=detailed_model_report through configs/figures.yaml. See
-docs/detailed_model_report.md. Imports perform no file I/O or rendering.
+docs/figures/detailed_model_report.md. Imports perform no file I/O or rendering.
 """
 
 import re

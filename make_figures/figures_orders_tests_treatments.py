@@ -1,7 +1,7 @@
 """Standalone laboratory, imaging, physical-exam and treatment request figures.
 
 Use figures=figures_orders_tests_treatments with configs/figures.yaml. See
-docs/orders_tests_treatments.md. Imports perform no I/O or rendering.
+docs/figures/figures_orders_tests_treatments.md. Imports perform no I/O or rendering.
 """
 
 from dataclasses import dataclass

@@ -1,7 +1,7 @@
 """Build the retrieval-stack benchmark table from inspection CSVs using configs/figures.yaml.
 
 Select figures=table_retrieval_stack; inputs are discovered inside results_dir.
-See docs/tables.md. Importing this module performs no file I/O or rendering.
+See docs/figures/table_retrieval_stack.md. Importing this module performs no file I/O or rendering.
 """
 
 from pathlib import Path

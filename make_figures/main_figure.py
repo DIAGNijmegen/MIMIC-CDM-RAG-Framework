@@ -1,7 +1,7 @@
 """Render the main manuscript figure and its statistics from inspection CSVs.
 
 Use configs/figures.yaml, figures/<profile>.yaml, and Hydra key=value overrides. Importing this module
-performs no plotting or file I/O. See docs/figures.md for inputs and examples.
+performs no plotting or file I/O. See docs/figures/main_figure.md for inputs and examples.
 """
 
 import re
