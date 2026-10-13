@@ -1,0 +1,20 @@
+# @package _global_
+defaults:
+  - _self_
+
+openai_api_key:
+model_name: gemma-2-9b-it-exl2-4.0bpw
+max_context_length: 16384
+exllama: True
+
+system_tag_start: "" # Gemma2 has no system role
+system_tag_end: ""
+
+user_tag_start: "<start_of_turn>user\n"
+user_tag_end: "<end_of_turn>"
+
+ai_tag_start: "<start_of_turn>model\n"
+ai_tag_end: "<end_of_turn>"
+
+stop_words:
+  - "<end_of_turn>"

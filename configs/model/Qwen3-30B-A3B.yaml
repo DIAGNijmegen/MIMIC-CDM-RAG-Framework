@@ -1,0 +1,20 @@
+# @package _global_
+defaults:
+  - _self_
+
+openai_api_key:
+model_name: Qwen3-30B-A3B-exl2-4.0bpw
+max_context_length: 16384
+exllama: True
+
+system_tag_start: "<|im_start|>system\n"
+system_tag_end: "<|im_end|>"
+
+user_tag_start: "<|im_start|>user\n"
+user_tag_end: "<|im_end|>"
+
+ai_tag_start: "<|im_start|>assistant\n"
+ai_tag_end: "<|im_end|>"
+
+stop_words:
+  - "<|im_end|>"
