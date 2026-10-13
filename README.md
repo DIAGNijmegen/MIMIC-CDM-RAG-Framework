@@ -38,7 +38,7 @@ export CUDA_HOME=/path/to/cuda/cuda_12.8.0
 pip install --no-deps -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu128
 ```
 
-Alternatively, Docker was used for the experiments; you can build the minimal supplied image from the repository root using:
+Alternatively, Docker was used for the experiments; if you prefer, you can also build the minimal supplied image from the repository root using:
 
 ```bash
 docker build -t mimic-cdm-rag:py310 .
