@@ -211,7 +211,7 @@ def run(args: DictConfig):
     # os.environ["LANGCHAIN_PROJECT"] = run_name
 
     #DEBUG: run only for 50 patients
-    hadm_info_clean = dict(list(hadm_info_clean.items())[:50])
+    # hadm_info_clean = dict(list(hadm_info_clean.items())[:50])
 
     # Predict for all patients
     first_patient_seen = False
