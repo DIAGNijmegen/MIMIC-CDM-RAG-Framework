@@ -31,21 +31,18 @@ not evaluated in these experiments.
 
 ## Environment
 
-A CUDA-capable GPU is required for the setup used here. **Docker was
-used for the experiments**; build the supplied image from the repository root:
-
-```bash
-docker build -t mimic-cdm-rag:py310 .
-```
-
-Alternatively, create a new virtual environment of your choosing with python=3.10, and then install the libraries from requirements.txt. Export your `CUDA_HOME` to your installed CUDA toolkit, rather than copying the example path. The pinned GPU packages target CUDA 12.8; a different setup may require compatible package builds.
+A CUDA-capable GPU is required for the setup used here. Create a new virtual environment of your choosing with python=3.10, and then install the libraries from requirements.txt. Export your `CUDA_HOME` to your installed CUDA toolkit, rather than copying the example path. The pinned GPU packages target CUDA 12.8; a different setup may require compatible package builds.
 
 ```bash
 export CUDA_HOME=/path/to/cuda/cuda_12.8.0
 pip install --no-deps -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu128
 ```
 
+Alternatively, Docker was used for the experiments; you can build the minimal supplied image from the repository root using:
 
+```bash
+docker build -t mimic-cdm-rag:py310 .
+```
 
 ## Configuration and documentation
 
