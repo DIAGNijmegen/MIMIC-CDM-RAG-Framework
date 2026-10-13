@@ -1,0 +1,62 @@
+# @package _global_
+# One six-panel appendix page per selected shared model.
+csv_patterns:
+  diagnostic_accuracy: DiagAccCDM_Fig3_*.csv
+  retrieval: RetrievalMetrics_perPathology_*.csv
+  retrieval_documents: RetrievalDocumentCounts_*.csv
+  treatment: TreatmentRequested_AllDiagnoses_*.csv
+  physical_examination: PhysicalExaminationPercentages_*.csv
+  laboratory: LaboratoryTestPercentages_*.csv
+  imaging: ImagingPercentages_*.csv
+# null uses the shared results_dir; override with folders, not file paths.
+input_dirs:
+  diagnostic_accuracy: null
+  retrieval: null
+  retrieval_documents: null
+  treatment: null
+  physical_examination: null
+  laboratory: null
+  imaging: null
+output_subdir: appendix_model_reports
+report_name: all_models_detailed_appendix_report
+individual_pages: true
+multipage_pdf: true  # Exported when pdf is in formats.
+dpi: 600
+figure_size: [7.05, 9.65]
+treatment_categories:
+  Appendicitis: [Antibiotics, Appendectomy, Support]
+  Cholecystitis: [Antibiotics, Cholecystectomy, Support]
+  Diverticulitis: [Antibiotics, Colectomy, Colonoscopy, Drainage, Support]
+  Pancreatitis: [Cholecystectomy, Drainage, ERCP, Support]
+laboratory_categories:
+  Appendicitis: [Inflammation]
+  Cholecystitis: [Inflammation, Liver, Gallbladder]
+  Diverticulitis: [Inflammation]
+  Pancreatitis: [Inflammation, Pancreas, Severity]
+physical_examination_categories:
+  - Physical Examination
+  - (Late) Physical Examination
+imaging_modalities: [CT, Ultrasound, MRI, Radiograph, Other, None]
+guideline_columns:
+  Appendicitis: Prop_Appendicitis
+  Cholecystitis: Prop_Cholecystitis
+  Diverticulitis: Prop_Diverticulitis
+  Pancreatitis: Prop_Pancreatitis
+treatment_labels:
+  Colonoscopy: 'Future\ncolonoscopy'
+physical_examination_labels:
+  Physical Examination: 'Physical\nexamination'
+  (Late) Physical Examination: 'Late physical\nexamination'
+pathology_colors:
+  Appendicitis: '#5478B3'
+  Cholecystitis: '#7A57A8'
+  Diverticulitis: '#B3477A'
+  Pancreatitis: '#5F9C92'
+pathology_light_colors:
+  Appendicitis: '#BAC5DE'
+  Cholecystitis: '#C9B0D9'
+  Diverticulitis: '#E6B0C9'
+  Pancreatitis: '#B2D9CD'
+condition_colors:
+  without RAG: '#BAC5DE'
+  with RAG: '#E6B0C9'
