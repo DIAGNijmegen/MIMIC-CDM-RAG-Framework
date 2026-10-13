@@ -1,0 +1,67 @@
+# @package _global_
+# Standalone order/treatment figures, composed through figures.yaml.
+plots:
+  - laboratory
+  - imaging_patients
+  - imaging_stacked_percentages
+  - imaging_stacked_counts
+  - physical_examination
+  - treatment_all_diagnoses
+  - treatment_correct_diagnosis
+csv_patterns:
+  laboratory: LaboratoryTestPercentages_*.csv
+  imaging: ImagingPercentages_*.csv
+  imaging_requests: ImagingAllRequests_*.csv
+  physical_examination: PhysicalExaminationPercentages_*.csv
+  treatment_all_diagnoses: TreatmentRequested_AllDiagnoses_*.csv
+  treatment_correct_diagnosis: TreatmentRequested_CorrectDiagnosis_*.csv
+# null uses the shared results_dir. Only inputs needed by selected plots are read.
+input_dirs:
+  laboratory: null
+  imaging: null
+  imaging_requests: null
+  physical_examination: null
+  treatment_all_diagnoses: null
+  treatment_correct_diagnosis: null
+output_subdir: orders_tests_treatments
+output_prefix: extended_data
+include_doctors: true
+doctor_model: MIMIC Doctors
+show_values_table: true  # false also reproduces the simpler imaging boxplot.
+show_violins: true
+panel_columns: 2
+figure_width: 7.09
+panel_height: 3.7
+stacked_height: 3.8
+laboratory_categories:
+  Appendicitis: [Inflammation]
+  Cholecystitis: [Inflammation, Liver, Gallbladder]
+  Diverticulitis: [Inflammation]
+  Pancreatitis: [Inflammation, Pancreas, Severity]
+physical_examination_categories:
+  - Physical Examination
+  - (Late) Physical Examination
+treatment_categories:
+  Appendicitis: [Antibiotics, Appendectomy, Support]
+  Cholecystitis: [Antibiotics, Cholecystectomy, Support]
+  Diverticulitis: [Antibiotics, Colectomy, Colonoscopy, Drainage, Support]
+  Pancreatitis: [Cholecystectomy, Drainage, ERCP, Support]
+imaging_modalities: [CT, Ultrasound, MRI, Radiograph, Other]
+# None denotes no abdominal imaging. It is not one of the visible stacked segments.
+category_labels:
+  Physical Examination: Physical examination
+  (Late) Physical Examination: Late physical examination
+  Colonoscopy: 'Future\ncolonoscopy'
+condition_colors:
+  without RAG: '#BAC5DE'
+  with RAG: '#E6B0C9'
+  MIMIC Doctors: '#D9D9D9'
+point_colors:
+  without RAG: '#5478B3'
+  with RAG: '#B3477A'
+modality_hatches:
+  CT: '//'
+  Ultrasound: '..'
+  MRI: 'xx'
+  Radiograph: '\\'
+  Other: '++'

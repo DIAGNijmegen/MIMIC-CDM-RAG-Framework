@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+  - _self_
+
+base_mimic: /container/data
+base_models: /container/models
+lab_test_mapping_path: /container/data/lab_test_mapping.pkl
+local_logging_dir: /container/data/logs
+base_rag_documents: /container/guidelines

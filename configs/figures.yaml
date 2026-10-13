@@ -30,22 +30,22 @@ pathologies:
 confidence: 0.95
 selected_models: null
 models:
-  # Llama-3.2-1B-Instruct-exl2-4.0bpw:
-  #   name: Llama3.2-1B
-  #   size: 1
-  #   medical: false
-  #   rag: Llama-3.2-1B-Instruct-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
-  #   display_label: null
-  #   pathology_no_rag: null
-  #   pathology_rag: null
-  # Mistral-7B-instruct-v0.3-exl2-4.0bpw:
-  #   name: Mistral-7B
-  #   size: 7
-  #   medical: false
-  #   rag: Mistral-7B-instruct-v0.3-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
-  #   display_label: null
-  #   pathology_no_rag: null
-  #   pathology_rag: null
+  Llama-3.2-1B-Instruct-exl2-4.0bpw:
+    name: Llama3.2-1B
+    size: 1
+    medical: false
+    rag: Llama-3.2-1B-Instruct-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+    display_label: null
+    pathology_no_rag: null
+    pathology_rag: null
+  Mistral-7B-instruct-v0.3-exl2-4.0bpw:
+    name: Mistral-7B
+    size: 7
+    medical: false
+    rag: Mistral-7B-instruct-v0.3-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+    display_label: null
+    pathology_no_rag: null
+    pathology_rag: null
   gemma-2-9b-it-exl2-4.0bpw:
     name: Gemma2-9B
     size: 9
@@ -54,46 +54,46 @@ models:
     display_label: null
     pathology_no_rag: null
     pathology_rag: null
-  # Llama-3.1-8B-Instruct-exl2-4.0bpw:
-  #   name: Llama3.1-8B
-  #   size: 8
-  #   medical: false
-  #   rag: Llama-3.1-8B-Instruct-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
-  #   display_label: null
-  #   pathology_no_rag: null
-  #   pathology_rag: null
-  # Llama-3.1-8B-UltraMedical-exl2-4.0bpw:
-  #   name: Llama3-UltraMedical-8B
-  #   size: 8
-  #   medical: true
-  #   rag: Llama-3.1-8B-UltraMedical-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
-  #   display_label: 'Llama3-Ultra\nMedical-8B'
-  #   pathology_no_rag: null
-  #   pathology_rag: null
-  # Qwen3-30B-A3B-exl2-4.0bpw:
-  #   name: Qwen3-30B
-  #   size: 30
-  #   medical: false
-  #   rag: Qwen3-30B-A3B-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
-  #   display_label: null
-  #   pathology_no_rag: null
-  #   pathology_rag: null
-  # Llama-3.1-70B-Instruct-exl2-4.0bpw:
-  #   name: Llama3.1-70B
-  #   size: 70
-  #   medical: false
-  #   rag: Llama-3.1-70B-Instruct-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
-  #   display_label: null
-  #   pathology_no_rag: null
-  #   pathology_rag: null
-  # Meditron3-70B-exl2-4.0bpw:
-  #   name: Meditron3-70B
-  #   size: 70
-  #   medical: true
-  #   rag: Meditron3-70B-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
-  #   display_label: null
-  #   pathology_no_rag: null
-  #   pathology_rag: null
+  Llama-3.1-8B-Instruct-exl2-4.0bpw:
+    name: Llama3.1-8B
+    size: 8
+    medical: false
+    rag: Llama-3.1-8B-Instruct-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+    display_label: null
+    pathology_no_rag: null
+    pathology_rag: null
+  Llama-3.1-8B-UltraMedical-exl2-4.0bpw:
+    name: Llama3-UltraMedical-8B
+    size: 8
+    medical: true
+    rag: Llama-3.1-8B-UltraMedical-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+    display_label: 'Llama3-Ultra\nMedical-8B'
+    pathology_no_rag: null
+    pathology_rag: null
+  Qwen3-30B-A3B-exl2-4.0bpw:
+    name: Qwen3-30B
+    size: 30
+    medical: false
+    rag: Qwen3-30B-A3B-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+    display_label: null
+    pathology_no_rag: null
+    pathology_rag: null
+  Llama-3.1-70B-Instruct-exl2-4.0bpw:
+    name: Llama3.1-70B
+    size: 70
+    medical: false
+    rag: Llama-3.1-70B-Instruct-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+    display_label: null
+    pathology_no_rag: null
+    pathology_rag: null
+  Meditron3-70B-exl2-4.0bpw:
+    name: Meditron3-70B
+    size: 70
+    medical: true
+    rag: Meditron3-70B-exl2-4.0bpw_Qwen3-Embedding-0.6B_md_febstep_boosted_medcpt_rerank
+    display_label: null
+    pathology_no_rag: null
+    pathology_rag: null
 cohort:
   title: Evaluation Cohort
   unit: cases
